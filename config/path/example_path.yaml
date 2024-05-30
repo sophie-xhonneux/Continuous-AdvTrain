@@ -1,0 +1,7 @@
+# @package _global_
+path:
+  experiments_path: ./experiments/experiments_db/
+  logging_path: ./experiments/
+  checkpoint_path: null
+  model_path: HuggingFaceH4/zephyr-7b-beta
+  model_name: mistral

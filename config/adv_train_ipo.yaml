@@ -1,0 +1,50 @@
+defaults:
+  - base_config
+  - path: base_path
+  - _self_
+
+hydra:
+  run:
+    dir: ${path.logging_path}/training/dpo/${experiment_id}
+
+experiment: adversarial_training
+
+dataset:
+  data_path: ./data/
+  utility_data: null 
+  probabilities:
+  - 0.5 # adv
+  - 0.5 # utility
+
+adversarial:
+  iters: 10
+  opt_config:
+    type: sign
+    lr: 1.0e-04
+  eps: 0.05
+  debug: 0
+  init_type: instruction
+
+sfttrainer:
+  packing: false
+  max_seq_length: 128
+
+training:
+  num_train_epochs: 20
+  per_device_train_batch_size: 8
+  gradient_accumulation_steps: 8
+  fp16: True
+  bf16: False
+
+trainer_hparams:
+  utility_weight: 1.0
+  away_weight: 0.5
+  toward_weight: 0.5
+  away_cutoff: -5.0
+  toward_cutoff: 0.0
+  trainer_type: dpo
+  dpo_weight: 1.0
+  dpo_beta: 0.25
+  dtype: auto
+
+# bnb: null
