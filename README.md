@@ -1,6 +1,16 @@
 # Continuous-AdvTrain
 
-This is a repository for the adversarial training code of our paper https://arxiv.org/abs/2405.15589 .
+This is a repository for the adversarial training code of our paper https://arxiv.org/abs/2405.15589.
+
+## Models
+
+Our models can be found on Huggingface:
+
+[Phi-CAT](https://huggingface.co/ContinuousAT/Phi-CAT)
+
+[Phi-CAPO](https://huggingface.co/ContinuousAT/Phi-CAPO)
+
+[Zephyr-CAT](https://huggingface.co/ContinuousAT/Zephyr-CAT/settings)
 
 ## Installation
 
