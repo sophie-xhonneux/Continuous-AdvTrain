@@ -12,6 +12,8 @@ Our models can be found on Huggingface:
 
 [Zephyr-CAT](https://huggingface.co/ContinuousAT/Zephyr-CAT/settings)
 
+[Zephyr-CAPO](https://huggingface.co/ContinuousAT/Zephyr-CAPO)
+
 ## Installation
 
 1. Clone this repository with `git clone git@github.com:sophie-xhonneux/Continuous-AdvTrain.git`
