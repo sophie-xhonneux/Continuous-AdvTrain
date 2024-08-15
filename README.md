@@ -10,7 +10,7 @@ Our models can be found on Huggingface:
 
 [Phi-CAPO](https://huggingface.co/ContinuousAT/Phi-CAPO)
 
-[Zephyr-CAT](https://huggingface.co/ContinuousAT/Zephyr-CAT/settings)
+[Zephyr-CAT](https://huggingface.co/ContinuousAT/Zephyr-CAT) 
 
 [Llama-2-CAT](https://huggingface.co/ContinuousAT/Llama-2-7B-CAT)
 
