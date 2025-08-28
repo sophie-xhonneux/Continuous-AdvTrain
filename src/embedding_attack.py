@@ -131,6 +131,8 @@ class EmbeddingSpaceAttack:
         self.loss_fct = torch.nn.CrossEntropyLoss()
 
     def attack(self, model, input_ids, target_ids, attention_mask):
+        disable_model_gradients(model)
+        
         # save losses and responses
         best_loss = torch.inf
         all_losses = []
@@ -140,6 +142,7 @@ class EmbeddingSpaceAttack:
         adv_perturbation, adv_perturbation_mask = self.init_perturbation(
             input_ids, target_ids, attention_mask
         )
+        
         input_embeds = self.get_embeddings(input_ids)
         target_one_hot = self.get_one_hot(target_ids)
 
@@ -194,6 +197,8 @@ class EmbeddingSpaceAttack:
         if self.debug > 2:
             self.debug_output(target_ids, logits, attention_mask)
 
+        enable_model_gradients(model)
+        
         return (
             input_embeds.detach(),
             adv_perturbation.detach(),
@@ -420,6 +425,19 @@ class EmbeddingSpaceAttack:
                 f"{generated_text_adv}"
             )
 
+def disable_model_gradients(model):
+    # logging.info("Disabled gradients")
+    for name, param in model.named_parameters():
+        if param.requires_grad and "lora" not in name:
+            raise ValueError(f"Non-Lora Parameter {name} requires grad")
+        param.requires_grad = False
+
+
+def enable_model_gradients(model, only_train_lora=True):
+    # logging.info("Enabled gradients")
+    for name, param in model.named_parameters():
+        if "lora" in name:
+            param.requires_grad = True
 
 class SignSGD(Optimizer):
     def __init__(self, params, lr=0.01):
@@ -439,3 +457,4 @@ class SignSGD(Optimizer):
                     p.add_(other=sign, alpha=-group["lr"])
 
         return loss
+
