@@ -16,10 +16,6 @@ Our models can be found on Huggingface:
 
 [Llama-3-CAT](https://huggingface.co/ContinuousAT/Llama3-8B-IT-CAT)
 
-Zephyr-CAPO refused a lot of harmless requests. We will upload a new model soon with a more sensible robustness utility trade-off
-
-
-
 ## Installation
 
 1. Clone this repository with `git clone git@github.com:sophie-xhonneux/Continuous-AdvTrain.git`
